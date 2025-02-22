@@ -1,0 +1,40 @@
+class Solution {
+public:
+    vector<string> wordSubsets(vector<string>& words1, vector<string>& words2) {
+        vector<int> hash(26,0);
+        int n1=words1.size();
+        int n2=words2.size();
+        vector<string> ans;
+        for (int i = 0; i < words2.size(); i++) {
+            vector<int> tempHash(26, 0);
+            for (int j = 0; j < words2[i].size(); j++) {
+                      tempHash[words2[i][j] - 'a']++;
+            }
+            for (int j = 0; j < 26; j++) {
+                hash[j] = max(hash[j], tempHash[j]);
+             }
+            }
+
+        for(int i=0;i<words1.size();i++)
+        {
+            vector<int> temphash=hash;
+            for(int j=0;j<words1[i].size();j++)
+            {
+                if(temphash[words1[i][j]-'a']>0)
+                temphash[words1[i][j]-'a']--;
+            }
+            bool flag=true;
+            for(int j=0;j<26;j++)
+            {
+                if(temphash[j]>0)
+                {
+                    flag=false;
+                    break;
+                }
+            }
+            if(flag==true)
+            ans.push_back(words1[i]);
+        }
+        return ans;
+    }
+};
