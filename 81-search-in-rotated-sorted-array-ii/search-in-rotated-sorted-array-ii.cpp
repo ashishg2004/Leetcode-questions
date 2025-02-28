@@ -7,6 +7,7 @@ public:
         {
             int mid=(low+high)/2;
             if(arr[mid]==target) return 1;
+            //checking for the edge case if low=mid=high
             if(arr[low]==arr[mid] && arr[mid]==arr[high])
             {
                 low=low+1;
@@ -23,6 +24,7 @@ public:
                 else
                 low=mid+1;
             }
+            //right sorted
             else
             {
                 if(arr[mid]<=target && arr[high]>=target)
