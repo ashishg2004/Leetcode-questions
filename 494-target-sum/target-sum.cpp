@@ -2,14 +2,12 @@ class Solution {
 public:
     int subsetSum(vector<int>& nums, int sum) {
         int n = nums.size();
-        vector<vector<int>> t(n + 1, vector<int>(sum + 1, 0));  // <-- changed char to int
+        vector<vector<int>> t(n + 1, vector<int>(sum + 1, 0)); 
 
-        // Base case: There's 1 way to make sum 0 — pick none
         for (int i = 0; i <= n; i++) {
             t[i][0] = 1;
         }
 
-        // Fill the table
         for (int i = 1; i <= n; i++) {
             for (int j = 0; j <= sum; j++) {
                 if (nums[i - 1] <= j)
@@ -28,7 +26,7 @@ public:
             sum += arr[i];
         }
 
-        // Check for valid subset sum
+       
         if ((sum + target) % 2 != 0 || abs(target) > sum) return 0;
 
         int ans = (target + sum) / 2;
