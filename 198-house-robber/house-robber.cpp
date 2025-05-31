@@ -10,7 +10,7 @@ public:
         int pick=nums[i];
         if(i>1)
         pick+=dp[i-2];
-        int notpick=0+dp[i-1];
+        int notpick=dp[i-1];
         dp[i] = max(pick,notpick);
         }
         return dp[n-1];
